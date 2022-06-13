@@ -1,0 +1,193 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>サークルブロック検索</title>
+        
+        <!-- CSS (load bootstrap from a CDN) -->
+        <style>
+            body { padding-top:50px; padding-left: 50px;}
+        </style>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- jQueryライブラリの読み込み-->
+        <script>
+          function colChange(day, dist){
+            $('#col > option').remove();
+
+            if(dist=="e1"){
+              //東123の処理
+              //A-Z
+              for(var i=0; i<26; i++){
+                mark = String.fromCodePoint(i+65);
+                if(day=='d1'){
+                  $('#col').append('<option value="'+mark+'">'+mark+'</option>');
+                }else{
+                  if(i!=1) $('#col').append('<option value="'+mark+'">'+mark+'</option>');
+                }
+              }
+              //ア-オ
+              for(var i=0; i<5; i++){
+                mark = String.fromCodePoint(i*2+12450);
+                $('#col').append('<option value="'+mark+'">'+mark+'</option>');
+              }
+              //カ-コ
+              for(var i=0; i<5; i++){
+                mark = String.fromCodePoint(i*2+12450+9);
+                $('#col').append('<option value="'+mark+'">'+mark+'</option>');
+              }
+              //サ
+              if(day=='d1'){
+                mark = String.fromCodePoint(6*2+12459);
+                $('#col').append('<option value="'+mark+'">'+mark+'</option>');
+              }
+
+            }else if(dist=="e2"){
+              //東456の処理
+              //シ
+              mark = String.fromCodePoint(12471);
+              $('#col').append('<option value="'+mark+'">'+mark+'</option>');
+              //ス
+              if(day=='d2'){
+                mark = String.fromCodePoint(7*2+12459);
+                $('#col').append('<option value="'+mark+'">'+mark+'</option>');
+              }
+              //セ-チ
+              for(var i=0; i<4; i++){
+                mark = String.fromCodePoint(i*2+12475);
+                $('#col').append('<option value="'+mark+'">'+mark+'</option>');
+              }
+              //ツ-ト
+              for(var i=0; i<3; i++){
+                mark = String.fromCodePoint(i*2+12484);
+                $('#col').append('<option value="'+mark+'">'+mark+'</option>');
+              }
+              //ナ-ノ
+              for(var i=0; i<5; i++){
+                mark = String.fromCodePoint(i+12490);
+                $('#col').append('<option value="'+mark+'">'+mark+'</option>');
+              }
+              //ハパ-ホポ
+              for(var i=0; i<5; i++){
+                mark = String.fromCodePoint(i*3+12495);
+                $('#col').append('<option value="'+mark+'">'+mark+'</option>');
+                mark = String.fromCodePoint(i*3+12497);
+                $('#col').append('<option value="'+mark+'">'+mark+'</option>');
+              }
+              //マ-モ
+              for(var i=0; i<5; i++){
+                mark = String.fromCodePoint(i+12510);
+                $('#col').append('<option value="'+mark+'">'+mark+'</option>');
+              }
+              //ヤ-ヨ
+              for(var i=0; i<3; i++){
+                mark = String.fromCodePoint(i*2+12516);
+                $('#col').append('<option value="'+mark+'">'+mark+'</option>');
+              }
+              //ラ-ロ
+              for(var i=0; i<5; i++){
+                mark = String.fromCodePoint(i+12521);
+                $('#col').append('<option value="'+mark+'">'+mark+'</option>');
+              }
+
+            }else{
+              //西12の処理
+              //あ-お
+              for(var i=0; i<5; i++){
+                mark = String.fromCodePoint(i*2+12354);
+                $('#col').append('<option value="'+mark+'">'+mark+'</option>');
+              }
+              //か-ち
+              for(var i=0; i<12; i++){
+                mark = String.fromCodePoint(i*2+12354+9);
+                $('#col').append('<option value="'+mark+'">'+mark+'</option>');
+              }
+              //つ-と
+              for(var i=0; i<3; i++){
+                mark = String.fromCodePoint(i*2+12354+34);
+                $('#col').append('<option value="'+mark+'">'+mark+'</option>');
+              }
+              //な-の
+              for(var i=0; i<5; i++){
+                mark = String.fromCodePoint(i+12354+40);
+                $('#col').append('<option value="'+mark+'">'+mark+'</option>');
+              }
+              //は-ほ
+              for(var i=0; i<5; i++){
+                if(!(day=='d2' && i==2)){
+                  mark = String.fromCodePoint(i*3+12354+45);
+                  $('#col').append('<option value="'+mark+'">'+mark+'</option>');
+                }
+              }
+              //ま-め
+              for(var i=0; i<4; i++){
+                if(!(day=='d2' && i==2)){
+                  mark = String.fromCodePoint(i+12354+60);
+                  $('#col').append('<option value="'+mark+'">'+mark+'</option>');
+                }
+              }
+            }
+            
+          }
+
+          $(function(){
+            $('#day').change(function() {
+              var day = $("#day").val();
+              var dist = $("#dist").val();
+              colChange(day, dist);
+            });
+
+            $('#dist').change(function() {
+              // 選択されているvalue属性値を取り出す
+              var day = $("#day").val();
+              var dist = $("#dist").val();
+              colChange(day, dist);
+            });
+    
+          });
+        </script>
+    </head>
+    
+    <body>
+        <h2>search circles block for C100</h2>
+
+        <form method="get" action="./">
+          
+          <select id="day" name="day">
+            <option value="d1">1日目</option>
+            <option value="d2">2日目</option>
+          </select>
+
+          <select id="dist" name="distriction">
+            <option value="e1" selected>東123</option>
+            <option value="e2">東456</option>
+            <option value="w">西12</option>
+          </select>
+
+          <select id="col" name="column">
+            <!--- A-Zア-サ -->
+            <%for(var i=0; i<26; i++){%>
+              <option value="<%=String.fromCodePoint(i+65)%>"><%=String.fromCodePoint(i+65)%></option>
+            <%}%>
+            <%for(var i=0; i<5; i++){%>
+              <option value="<%=String.fromCodePoint(i*2+12450)%>"><%=String.fromCodePoint(i*2+12450)%></option>
+            <%}%>
+            <%for(var i=0; i<6; i++){%>
+              <option value="<%=String.fromCodePoint(i*2+12459)%>"><%=String.fromCodePoint(i*2+12459)%></option>
+            <%}%>
+          </select>
+
+          <input type="text" name="place" value="11">
+
+          <input type="submit" value="検索！">
+        </form>
+        <br>
+        検索結果： <span>
+          <%=day %>
+          <%=column %>
+          <%=block %>
+      </span> 
+    </body>
+
+</html>
+
+
