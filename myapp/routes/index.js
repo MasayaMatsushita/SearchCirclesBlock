@@ -107,7 +107,7 @@ function eastWall(place){
   else if(82<=place && place<92) return '0'
   return '?';
 }
-function westWallあ(place){
+function westWallA(place){
   console.log('westWallあ');
   if(1<=place && place<16) return '1'
   else if(21<=place && place<24) return '2'
@@ -119,7 +119,7 @@ function westWallあ(place){
   else if(62<=place && place<70) return '8'
   return '?';
 }
-function westWallめ(place){
+function westWallM(place){
   console.log('westWallめ');
   if(1<=place && place<16) return '1'
   else if(16<=place && place<24) return '2'
@@ -191,8 +191,8 @@ function getBlock(column, place){
 
   //壁
   if(65 == column.codePointAt(0) || column.codePointAt(0) == 12471) return eastWall(place);
-  if(12354 == column.codePointAt(0)) return westWallあ(place);
-  if(12417 == column.codePointAt(0)) return westWallめ(place);
+  if(12354 == column.codePointAt(0)) return westWallA(place);
+  if(12417 == column.codePointAt(0)) return westWallM(place);
 }
 
 
