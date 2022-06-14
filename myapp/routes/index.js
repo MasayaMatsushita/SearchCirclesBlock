@@ -212,9 +212,10 @@ router.get('/', function(req, res, next) {
   dist = req.query.distriction;
 
   // console.log(place);
-
-  if(place == undefined) place = '11';
+  if(day == undefined) day = '1';
   if(dist == undefined) dist = 'e1';
+  if(column == undefined) column = 'A';
+  if(place == undefined) place = '11';
 
 
   res.render('index', 
