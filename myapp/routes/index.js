@@ -151,7 +151,7 @@ function getBlock(column='c', place){
   壁
   A、シ、あ、め
   */
-  col_num = column.charCodeAt(0);
+  col_num = column.codePointAt(0);
 
   //C-L
   if(66 < col_num && col_num < 77) return eastDefaultBlock(place)
