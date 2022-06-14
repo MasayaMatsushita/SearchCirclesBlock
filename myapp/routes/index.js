@@ -211,10 +211,10 @@ router.get('/', function(req, res, next) {
   place = req.query.place;
   dist = req.query.distriction;
 
-  // console.log(place);
-  if(day == undefined) day = '1';
+  // console.log(column);
+  // if(day == '?') day = '';
   if(dist == undefined) dist = 'e1';
-  if(column == undefined) column = 'A';
+  // if(column == '?') column = '?';
   if(place == undefined) place = '11';
 
 
