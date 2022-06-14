@@ -132,7 +132,7 @@ function westWallM(place){
   return '?';
 }
 
-function getBlock(column, place){
+function getBlock(column='c', place){
   /*
   共通処理
   C-L, O-X, ア-コ, セーヌ, ハ-ポ, ムーレ
@@ -151,7 +151,7 @@ function getBlock(column, place){
   壁
   A、シ、あ、め
   */
-  col_num = column.codePointAt();
+  col_num = column.charCodeAt(0);
 
   //C-L
   if(66 < col_num && col_num < 77) return eastDefaultBlock(place)
