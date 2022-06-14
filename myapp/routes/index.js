@@ -194,6 +194,8 @@ function getBlock(column='c', place){
   if(65 == col_num || col_num == 12471) return eastWall(place);
   if(12354 == col_num) return westWallA(place);
   if(12417 == col_num) return westWallM(place);
+
+  return '?';
 }
 
 
@@ -202,11 +204,26 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+
+  day = getDay(req.query.day);
+  column = getColumn(req.query.column);
+  block = getBlock(req.query.column, Number(req.query.place));
+  place = req.query.place;
+  dist = req.query.distriction;
+
+  // console.log(place);
+
+  if(place == undefined) place = '11';
+  if(dist == undefined) dist = 'e1';
+
+
   res.render('index', 
     {
-      day: getDay(req.query.day), 
-      column: getColumn(req.query.column),
-      block: getBlock(req.query.column, Number(req.query.place))
+      day: day, 
+      column: column,
+      block: block,
+      place: place,
+      dist: dist
     }
   );
 });

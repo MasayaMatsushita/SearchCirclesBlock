@@ -142,6 +142,13 @@
               var dist = $("#dist").val();
               colChange(day, dist);
             });
+
+            $('#day').val('d<%=day%>');
+            $('#dist').val('<%=dist%>');
+            $('#col').val('<%=column%>');
+            $('#place').val('<%=place%>');
+
+            
     
           });
         </script>
@@ -176,7 +183,7 @@
             <%}%>
           </select>
 
-          <input type="text" name="place" value="11">
+          <input type="text" id="place" name="place" value="11">
 
           <input type="submit" value="検索！">
         </form>
