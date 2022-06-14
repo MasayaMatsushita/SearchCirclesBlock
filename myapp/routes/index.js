@@ -151,48 +151,49 @@ function getBlock(column, place){
   壁
   A、シ、あ、め
   */
+  col_num = column.codePointAt();
 
   //C-L
-  if(66 < column.codePointAt(0) && column.codePointAt(0) < 77) return eastDefaultBlock(place)
+  if(66 < col_num && col_num < 77) return eastDefaultBlock(place)
   //O-X
-  if(79 <= column.codePointAt(0) && column.codePointAt(0) <= 88) return eastDefaultBlock(place)
+  if(79 <= col_num && col_num <= 88) return eastDefaultBlock(place)
   //ア-コ
-  if(12450 <= column.codePointAt(0) && column.codePointAt(0) <= 12467) return eastDefaultBlock(place)
+  if(12450 <= col_num && col_num <= 12467) return eastDefaultBlock(place)
   //セーヌ
-  if(12475 <= column.codePointAt(0) && column.codePointAt(0) <= 12492) return eastDefaultBlock(place)
+  if(12475 <= col_num && col_num <= 12492) return eastDefaultBlock(place)
   //ハ-ポ
-  if(12495 <= column.codePointAt(0) && column.codePointAt(0) <= 12509) return eastDefaultBlock(place)
+  if(12495 <= col_num && col_num <= 12509) return eastDefaultBlock(place)
   //ムーレ
-  if(12512 <= column.codePointAt(0) && column.codePointAt(0) <= 12524) return eastDefaultBlock(place)
+  if(12512 <= col_num && col_num <= 12524) return eastDefaultBlock(place)
 
   //いーか
-  if(12356 <= column.codePointAt(0) && column.codePointAt(0) <= 12363) return westDefaultBlock1(place)
+  if(12356 <= col_num && col_num <= 12363) return westDefaultBlock1(place)
   //へーむ
-  if(12408 <= column.codePointAt(0) && column.codePointAt(0) <= 12416) return westDefaultBlock1(place)
+  if(12408 <= col_num && col_num <= 12416) return westDefaultBlock1(place)
 
   //きーさ
-  if(12365 <= column.codePointAt(0) && column.codePointAt(0) <= 12373) return westDefaultBlock2(place)
+  if(12365 <= col_num && col_num <= 12373) return westDefaultBlock2(place)
   //ねーふ
-  if(12397 <= column.codePointAt(0) && column.codePointAt(0) <= 12405) return westDefaultBlock2(place)
+  if(12397 <= col_num && col_num <= 12405) return westDefaultBlock2(place)
 
   //せーな
-  if(12379 <= column.codePointAt(0) && column.codePointAt(0) <= 12394) return westDefaultBlock3(place)
+  if(12379 <= col_num && col_num <= 12394) return westDefaultBlock3(place)
 
   //し、す、に、ぬ
-  if(12375 == column.codePointAt(0) || 12377 == column.codePointAt(0) || 12395 == column.codePointAt(0) || 12397 == column.codePointAt(0)) return westPiller(place)
+  if(12375 == col_num || 12377 == col_num || 12395 == col_num || 12397 == col_num) return westPiller(place)
   //M、Z、ネ、ミ
-  if(77 == column.codePointAt(0) || 90 == column.codePointAt(0) || 12493 == column.codePointAt(0) || 12511 == column.codePointAt(0)) return eastPiller1(place)
+  if(77 == col_num || 90 == col_num || 12493 == col_num || 12511 == col_num) return eastPiller1(place)
   //N、Y、ノ、マ
-  if(78 == column.codePointAt(0) || 89 == column.codePointAt(0) || 12494 == column.codePointAt(0) || 12510 == column.codePointAt(0)) return eastPiller2(place)
+  if(78 == col_num || 89 == col_num || 12494 == col_num || 12510 == col_num) return eastPiller2(place)
 
   //B、サ、ス、ロ
-  if(66 == column.codePointAt(0) || 12288 == column.codePointAt(0) || 12292 == column.codePointAt(0) || 12525 == column.codePointAt(0)) return eastEdge(place)
+  if(66 == col_num || 12288 == col_num || 12292 == col_num || 12525 == col_num) return eastEdge(place)
 
 
   //壁
-  if(65 == column.codePointAt(0) || column.codePointAt(0) == 12471) return eastWall(place);
-  if(12354 == column.codePointAt(0)) return westWallA(place);
-  if(12417 == column.codePointAt(0)) return westWallM(place);
+  if(65 == col_num || col_num == 12471) return eastWall(place);
+  if(12354 == col_num) return westWallA(place);
+  if(12417 == col_num) return westWallM(place);
 }
 
 
